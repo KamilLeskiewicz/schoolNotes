@@ -5,9 +5,10 @@ const getNotes = async (req, res) => {
     const notes = await Notes.find();
     res.status(200).send(notes);
   } catch (error) {
-    res.status(500).send;
+    res.status(500).send({ error: "Internal Server Error" });
   }
 };
+
 module.exports = {
   getNotes,
 };
