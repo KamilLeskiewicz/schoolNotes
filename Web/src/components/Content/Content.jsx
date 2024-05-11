@@ -7,9 +7,7 @@ const Content = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("dupa");
-        const response = await axios.get("/api/data");
-        console.log("dupa");
+        const response = await axios.get("http://localhost:8080/api/data");
         setNotes(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -22,9 +20,7 @@ const Content = () => {
   return (
     <div>
       <h1>Notes</h1>
-      <ul>
-        {notes.map((note) => {
-          console.log("Note:", note);
+      {Array.isArray(notes) && notes.map((note) => {
           return (
             <li key={note._id}>
               <h2>{note.title}</h2>
@@ -32,7 +28,6 @@ const Content = () => {
             </li>
           );
         })}
-      </ul>
     </div>
   );
 };
