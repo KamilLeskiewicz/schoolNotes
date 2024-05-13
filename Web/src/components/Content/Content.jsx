@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./../../scss/Content.scss";
 
 const Content = () => {
   const [notes, setNotes] = useState([]);
@@ -27,14 +28,17 @@ const Content = () => {
   }, []);
 
   return (
-    <div>
+    <div className="content-container">
+      {" "}
       <h1>Notes</h1>
-      {notes.map((note) => (
-        <li key={note._id}>
-          <h2>{note.title}</h2>
-          <p>{note.content}</p>
-        </li>
-      ))}
+      <ul>
+        {notes.map((note) => (
+          <li key={note._id}>
+            <h2>{note.title}</h2>
+            <p>{note.content}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
