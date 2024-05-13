@@ -8,13 +8,18 @@ const Content = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:8080/api/data");
-        if (response.data && Array.isArray(response.data)) {
+        if (response.data && typeof response.data === "object") {
+          setNotes([response.data]);
+        } else if (response.data && Array.isArray(response.data)) {
           setNotes(response.data);
         } else {
-          console.error("Invalid data format received:", response.data);
+          console.error(
+            "Otrzymano nieprawidłowy format danych:",
+            response.data
+          );
         }
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Błąd podczas pobierania danych:", error);
       }
     };
 
