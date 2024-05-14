@@ -8,7 +8,9 @@ const Content = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/data");
+        const response = await axios.get(
+          "https://schoolnotes-8yri.onrender.com/api/data"
+        );
         if (response.data && typeof response.data === "object") {
           setNotes([response.data]);
         } else if (response.data && Array.isArray(response.data)) {
